@@ -9,7 +9,9 @@ import { type CommitOptions } from '../index'
 const withHook = (answers: Answers) => {
   try {
     const scope = answers.scope ? `(${answers.scope}): ` : ''
-    const title = `${answers.gitmoji} ${scope}${answers.title}`
+    const bugId = answers.bugId || '/'
+    const type = answers.type ? `${answers.type}(): ` : ''
+    const title = `${type}${answers.gitmoji} ${scope}${answers.title} [${bugId}]`
     const commitMessage = `${title}${
       answers.message ? `\n\n${answers.message}` : ''
     }`

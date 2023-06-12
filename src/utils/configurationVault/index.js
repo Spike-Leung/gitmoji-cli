@@ -28,6 +28,14 @@ const setGitmojisUrl = (gitmojisUrl: string): void => {
   configuration.set(CONFIG.GITMOJIS_URL, gitmojisUrl)
 }
 
+const setType = (type: boolean): void => {
+  configuration.set(CONFIG.TYPE, type)
+}
+
+const setBugId = (bugId: boolean): void => {
+  configuration.set(CONFIG.BUG_ID, bugId)
+}
+
 const getAutoAdd = (): boolean => {
   return configuration.get(CONFIG.AUTO_ADD)
 }
@@ -52,6 +60,14 @@ const getGitmojisUrl = (): string => {
   return configuration.get(CONFIG.GITMOJIS_URL)
 }
 
+const getType = (type: boolean): void => {
+  return configuration.get(CONFIG.TYPE, type)
+}
+
+const getBugId = (bugId: boolean): void => {
+  return configuration.get(CONFIG.BUG_ID, bugId)
+}
+
 export default {
   getAutoAdd,
   getEmojiFormat,
@@ -59,10 +75,14 @@ export default {
   getMessagePrompt,
   getCapitalizeTitle,
   getGitmojisUrl,
+  getType,
+  getBugId,
   setAutoAdd,
   setEmojiFormat,
   setScopePrompt,
   setMessagePrompt,
   setCapitalizeTitle,
-  setGitmojisUrl
+  setGitmojisUrl,
+  setType,
+  setBugId,
 }

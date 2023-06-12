@@ -13,6 +13,8 @@ const config = () => {
     configurationVault.setMessagePrompt(answers[CONFIG.MESSAGE_PROMPT])
     configurationVault.setCapitalizeTitle(answers[CONFIG.CAPITALIZE_TITLE])
     configurationVault.setGitmojisUrl(answers[CONFIG.GITMOJIS_URL])
+    configurationVault.setBugId(answers[CONFIG.BUG_ID])
+    configurationVault.setType(answers[CONFIG.TYPE])
   })
 }
 

@@ -4,7 +4,9 @@ import inquirerAutocompletePrompt from 'inquirer-autocomplete-prompt'
 
 import configurationVault from '@utils/configurationVault'
 import filterGitmojis from '@utils/filterGitmojis'
+import filterTypes from '@utils/filterTypes'
 import getDefaultCommitContent from '@utils/getDefaultCommitContent'
+import types from '@constants/types'
 import { type CommitOptions, capitalizeTitle } from '.'
 import guard from './guard'
 
@@ -23,7 +25,8 @@ export type Answers = {
   gitmoji: string,
   scope: ?string,
   title: string,
-  message: ?string
+  message: ?string,
+  bugId: ?string
 }
 
 export default (
@@ -33,6 +36,23 @@ export default (
   const { title, message, scope } = getDefaultCommitContent(options)
 
   return [
+    ...(configurationVault.getType()
+        ? [
+          {
+            name: 'type',
+            message: 'Choose a type:',
+            type: 'autocomplete',
+            source: (answersSoFor: any, input: string) => {
+              return Promise.resolve(
+                filterTypes(input, types).map((type) => ({
+                  name: `${type.name}  - ${type.description}`,
+                  value: type.name,
+                }))
+              )
+            }
+          },
+        ] : []),
+
     {
       name: 'gitmoji',
       message: 'Choose a gitmoji:',
@@ -47,17 +67,17 @@ export default (
       }
     },
     ...(configurationVault.getScopePrompt()
-      ? [
+        ? [
           {
             name: 'scope',
             message: 'Enter the scope of current changes:',
             ...(scope ? { default: scope } : {})
           }
         ]
-      : []),
+        : []),
     {
       name: 'title',
-      message: 'Enter the commit title',
+      message: 'Enter the commit title:',
       validate: guard.title,
       transformer: (input: string) => {
         return `[${(title || input).length}/${TITLE_MAX_LENGTH_COUNT}]: ${
@@ -69,13 +89,22 @@ export default (
       ...(title ? { default: title } : {})
     },
     ...(configurationVault.getMessagePrompt()
-      ? [
+        ? [
           {
             name: 'message',
             message: 'Enter the commit message:',
             ...(message ? { default: message } : {})
           }
         ]
-      : [])
+        : []),
+    ...(configurationVault.getBugId()
+        ? [
+          {
+            name: 'bugId',
+            message: 'Enter the jira bug ID(e.g.: RY-01):',
+            default: '/'
+          }
+        ]
+        : [])
   ]
 }

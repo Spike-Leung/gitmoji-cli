@@ -11,7 +11,9 @@ const DEFAULT_CONFIGURATION = {
   [CONFIG.SCOPE_PROMPT]: false,
   [CONFIG.MESSAGE_PROMPT]: true,
   [CONFIG.CAPITALIZE_TITLE]: true,
-  [CONFIG.GITMOJIS_URL]: 'https://gitmoji.dev/api/gitmojis'
+  [CONFIG.GITMOJIS_URL]: 'https://gitmoji.dev/api/gitmojis',
+  [CONFIG.TYPE]: true,
+  [CONFIG.BUG_ID]: true,
 }
 
 const LOCAL_CONFIGURATION: typeof Conf = new Conf({
@@ -41,7 +43,15 @@ const LOCAL_CONFIGURATION: typeof Conf = new Conf({
       type: 'string',
       format: 'url',
       default: DEFAULT_CONFIGURATION[CONFIG.GITMOJIS_URL]
-    }
+    },
+    [CONFIG.TYPE]: {
+      type: 'boolean',
+      default: DEFAULT_CONFIGURATION[CONFIG.TYPE]
+    },
+    [CONFIG.BUG_ID]: {
+      type: 'boolean',
+      default: DEFAULT_CONFIGURATION[CONFIG.BUG_ID]
+    },
   }
 })
 

@@ -39,10 +39,22 @@ export default (): Array<Object> => [
     default: configurationVault.getCapitalizeTitle()
   },
   {
+    name: CONFIG.TYPE,
+    message: 'Enable type prompts',
+    type: 'confirm',
+    default: configurationVault.getType(),
+  },
+  {
+    name: CONFIG.BUG_ID,
+    message: 'Enable bug ID prompts',
+    type: 'confirm',
+    default: configurationVault.getBugId(),
+  },
+  {
     name: CONFIG.GITMOJIS_URL,
     message: 'Set gitmojis api url',
     type: 'input',
     default: configurationVault.getGitmojisUrl(),
     validate: guard.url
-  }
+  },
 ]
