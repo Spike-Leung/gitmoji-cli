@@ -79,7 +79,7 @@ export default (
       : []),
     {
       name: 'title',
-      message: 'Enter the commit title:',
+      message: 'Enter the commit title',
       validate: guard.title,
       transformer: (input: string) => {
         return `[${(title || input).length}/${TITLE_MAX_LENGTH_COUNT}]: ${
