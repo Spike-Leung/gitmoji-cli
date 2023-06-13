@@ -19,6 +19,7 @@ describe('getConfiguration', () => {
         projectName: 'gitmoji',
         schema: {
           [CONFIG.AUTO_ADD]: { type: 'boolean', default: false },
+          [CONFIG.BUG_ID]: { type: 'boolean', default: true },
           [CONFIG.EMOJI_FORMAT]: {
             enum: Object.values(EMOJI_COMMIT_FORMATS),
             default: 'code'
@@ -26,6 +27,10 @@ describe('getConfiguration', () => {
           [CONFIG.SCOPE_PROMPT]: {
             type: 'boolean',
             default: false
+          },
+          [CONFIG.TYPE]: {
+            type: 'boolean',
+            default: true
           },
           [CONFIG.MESSAGE_PROMPT]: { type: 'boolean', default: true },
           [CONFIG.CAPITALIZE_TITLE]: { type: 'boolean', default: true },
