@@ -1,18 +1,18 @@
 // @flow
 import Fuse from 'fuse.js'
 
-import { type Types } from "@constants/types"
+import { type Types } from '@constants/types'
 
 export const options = {
   threshold: 0.5,
   keys: [
     {
       name: 'name',
-      weight: 0.5
+      weight: 0.65
     },
     {
       name: 'description',
-      weight: 0.5
+      weight: 0.35
     }
   ]
 }
