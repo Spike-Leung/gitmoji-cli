@@ -12,7 +12,7 @@ const withHook = (answers: Answers) => {
     const bugId = answers.bugId ? ` [${answers.bugId}]` : ''
     const type = answers.type ? `${answers.type}(): ` : ''
     const title = type
-      ? `${type}${scope}${answers.gitmoji} ${answers.title}${bugId}`
+      ? `${type}${scope || '()'}${answers.gitmoji} ${answers.title}${bugId}`
       : `${answers.gitmoji} ${scope}${answers.title}${bugId}`
     const commitMessage = `${title}${
       answers.message ? `\n\n${answers.message}` : ''
