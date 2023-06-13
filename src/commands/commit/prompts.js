@@ -26,7 +26,8 @@ export type Answers = {
   scope: ?string,
   title: string,
   message: ?string,
-  bugId: ?string
+  bugId: ?string,
+  type: ?string
 }
 
 export default (
@@ -37,7 +38,7 @@ export default (
 
   return [
     ...(configurationVault.getType()
-        ? [
+      ? [
           {
             name: 'type',
             message: 'Choose a type:',
@@ -46,12 +47,13 @@ export default (
               return Promise.resolve(
                 filterTypes(input, types).map((type) => ({
                   name: `${type.name}  - ${type.description}`,
-                  value: type.name,
+                  value: type.name
                 }))
               )
             }
-          },
-        ] : []),
+          }
+        ]
+      : []),
 
     {
       name: 'gitmoji',
@@ -67,14 +69,14 @@ export default (
       }
     },
     ...(configurationVault.getScopePrompt()
-        ? [
+      ? [
           {
             name: 'scope',
             message: 'Enter the scope of current changes:',
             ...(scope ? { default: scope } : {})
           }
         ]
-        : []),
+      : []),
     {
       name: 'title',
       message: 'Enter the commit title:',
@@ -89,22 +91,22 @@ export default (
       ...(title ? { default: title } : {})
     },
     ...(configurationVault.getMessagePrompt()
-        ? [
+      ? [
           {
             name: 'message',
             message: 'Enter the commit message:',
             ...(message ? { default: message } : {})
           }
         ]
-        : []),
+      : []),
     ...(configurationVault.getBugId()
-        ? [
+      ? [
           {
             name: 'bugId',
             message: 'Enter the jira bug ID(e.g.: RY-01):',
             default: '/'
           }
         ]
-        : [])
+      : [])
   ]
 }

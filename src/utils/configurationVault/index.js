@@ -60,12 +60,12 @@ const getGitmojisUrl = (): string => {
   return configuration.get(CONFIG.GITMOJIS_URL)
 }
 
-const getType = (type: boolean): void => {
-  return configuration.get(CONFIG.TYPE, type)
+const getType = (): boolean => {
+  return configuration.get(CONFIG.TYPE)
 }
 
-const getBugId = (bugId: boolean): void => {
-  return configuration.get(CONFIG.BUG_ID, bugId)
+const getBugId = (): boolean => {
+  return configuration.get(CONFIG.BUG_ID)
 }
 
 export default {
@@ -84,5 +84,5 @@ export default {
   setCapitalizeTitle,
   setGitmojisUrl,
   setType,
-  setBugId,
+  setBugId
 }
