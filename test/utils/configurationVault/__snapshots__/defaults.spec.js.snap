@@ -3,16 +3,20 @@
 exports[`index should match the module 1`] = `
 {
   "getAutoAdd": [Function],
+  "getBugId": [Function],
   "getCapitalizeTitle": [Function],
   "getEmojiFormat": [Function],
   "getGitmojisUrl": [Function],
   "getMessagePrompt": [Function],
   "getScopePrompt": [Function],
+  "getType": [Function],
   "setAutoAdd": [Function],
+  "setBugId": [Function],
   "setCapitalizeTitle": [Function],
   "setEmojiFormat": [Function],
   "setGitmojisUrl": [Function],
   "setMessagePrompt": [Function],
   "setScopePrompt": [Function],
+  "setType": [Function],
 }
 `;
