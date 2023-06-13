@@ -19,12 +19,12 @@ jobs:
         run: |
           yarn install --ignore-scripts
           yarn build
-      - name: Publish package to NPM 🚀
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
-        run: |
-         npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
-         npm publish
+      # - name: Publish package to NPM 🚀
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
+      #   run: |
+      #    npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+      #    npm publish
       - name: Package 📦
         run: yarn package
       - name: Publish Release ✨
